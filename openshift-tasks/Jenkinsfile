@@ -124,7 +124,6 @@ podTemplate(
                 rc = openshift.selector("rc", "tasks-${dc_version}").object()
               }
               
-              // check_running_app_status(devProject, 'tasks')
             }
           }
         }
@@ -193,7 +192,6 @@ podTemplate(
                 sleep 5
                 rc_prod = openshift.selector("rc", "${destApp}-${dc_version}").object()
               }
-              // check_running_app_status(prodProject, destApp)
             }
           }
         }
@@ -211,20 +209,6 @@ podTemplate(
         }
       }
     }
-  }
-}
-
-def check_running_app_status(namespace, app_name){
-  def app_running_count = 0
-  while (app_running_count < 5) {
-    sleep 5
-    app_running = sh(returnStdout: true, script: "../bin/check_running_app_status.sh ${namespace} ${app_name}").trim()
-    if(app_running == '1') {
-      app_running_count++
-    }else{
-      app_running_count = 0
-    }
-    echo "app_running_count: ${app_running_count}"
   }
 }
 
