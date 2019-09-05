@@ -124,7 +124,7 @@ podTemplate(
                 rc = openshift.selector("rc", "tasks-${dc_version}").object()
               }
               
-              check_running_app_status(devProject, 'tasks')
+              // check_running_app_status(devProject, 'tasks')
             }
           }
         }
@@ -193,7 +193,7 @@ podTemplate(
                 sleep 5
                 rc_prod = openshift.selector("rc", "${destApp}-${dc_version}").object()
               }
-              check_running_app_status(prodProject, destApp)
+              // check_running_app_status(prodProject, destApp)
             }
           }
         }
